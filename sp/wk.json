@@ -1,0 +1,14 @@
+{
+  "sp_name": "Wild Keeper",
+  "sp_ele_type": "light",
+  "wpn_type": "right",
+  "skills": [
+    {
+      "skill_name": "Throw the boomerang",
+      "skill_cast_time": 0.1,
+      "skill_cool_down": 0.7,
+      "skill_nml_att": 110,
+      "skill_ele_att": 160
+    }
+  ]
+}

@@ -24,6 +24,5 @@ class Weapon:
         self.wpn_ext_ele_val = wpn_ext_ele_val
         self.dec_mob_res = dec_mob_res
         self.shell = Shell(**shell)
-        print('xxx', self.wpn_type)
         assert(self.wpn_type in ('left', 'right'))
         assert(0 <= self.wpn_att_lvl <= 10)

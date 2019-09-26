@@ -1,0 +1,17 @@
+{
+  "wpn_type": "",
+  "wpn_min_att": 0,
+  "wpn_max_att": 0,
+  "wpn_att_lvl": 0,
+  "wpn_ext_nml_att": 0,
+  "wpn_ext_ele_val": 0,
+  "dec_mob_res": 0,
+  "shell": {
+      "shell_ext_nml_att": 0,
+      "shell_ext_pct_att": 0,
+      "shell_sl_att": 0,
+      "shell_sl_def": 0,
+      "shell_sl_ele": 0,
+      "shell_sl_hmp": 0
+  }
+}

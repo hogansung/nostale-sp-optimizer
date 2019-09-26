@@ -1,0 +1,20 @@
+{
+    "wpn_name": "Honourable: Great Leader's Knife",
+    "wpn_type": "left",
+    "wpn_min_att": 437,
+    "wpn_max_att": 492,
+    "wpn_att_lvl": 6,
+    "wpn_ext_nml_att": 0,
+    "wpn_ext_ele_val": 80,
+    "dec_mob_res": 0,
+    "shell": {
+        "shell_ext_nml_att": 61,
+        "shell_ext_ele_att": 0,
+        "shell_ext_pct_att": 0,
+        "shell_sl_att": 7,
+        "shell_sl_def": 0,
+        "shell_sl_ele": 0,
+        "shell_sl_hmp": 9,
+        "shell_sl_all": 0
+    }
+}

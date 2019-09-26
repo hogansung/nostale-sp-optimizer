@@ -108,12 +108,15 @@ class SPCACULATOR:
             - shell_ext_pct_att: S- % Damage shell
         '''
         self.att_def_diff_ext_att = (self.att_def_diff_table[self.att_def_diff_level] - 1) * 100
-        print(self.char_with_wpn_min_nml_att, self.skill_nml_att, self.att_def_diff_ext_att)
         self.char_with_wpn_with_skill_min_nml_att = (self.char_with_wpn_min_nml_att + self.skill_nml_att + self.att_def_diff_ext_att) * (1 + self.char.wpn.shell.shell_ext_pct_att)
         self.char_with_wpn_with_skill_max_nml_att = (self.char_with_wpn_max_nml_att + self.skill_nml_att + self.att_def_diff_ext_att) * (1 + self.char.wpn.shell.shell_ext_pct_att)
+        
+        '''
+            Physical Damage
+            - mob_def: mob defence
+        '''
         self.char_with_wpn_with_skill_min_nml_dmg = self.char_with_wpn_with_skill_min_nml_att - self.mob.mob_def
         self.char_with_wpn_with_skill_max_nml_dmg = self.char_with_wpn_with_skill_max_nml_att - self.mob.mob_def
-        print('!', self.char_with_wpn_with_skill_min_nml_dmg, self.char_with_wpn_with_skill_max_nml_dmg)
 
         '''
             E Function
@@ -121,8 +124,8 @@ class SPCACULATOR:
             - sp_ext_ele_att: element given by sp
         '''
         self.sp_ext_ele_att = 106
-        self.char_with_wpn_min_ele_att = (self.char_with_wpn_with_skill_min_nml_att + 100) * (self.char.fairy_pct + self.sp_ext_ele_att)
-        self.char_with_wpn_max_ele_att = (self.char_with_wpn_with_skill_max_nml_att + 100) * (self.char.fairy_pct + self.sp_ext_ele_att)
+        self.char_with_wpn_min_ele_att = (self.char_with_wpn_with_skill_min_nml_att + 100) * (self.char.fairy_pct + self.sp_ext_ele_att) / 100
+        self.char_with_wpn_max_ele_att = (self.char_with_wpn_with_skill_max_nml_att + 100) * (self.char.fairy_pct + self.sp_ext_ele_att) / 100
 
         '''
             Et Function
@@ -139,12 +142,11 @@ class SPCACULATOR:
             - dec_mob_res # % enemy reduced res
             - fnl_mob_res = mob_res - dec_mob_res
         '''
-        self.fnl_mob_res = self.mob.mob_res - self.char.wpn.dec_mob_res
-        self.char_with_wpn_with_skill_min_ele_dmg = (self.char_with_wpn_with_skill_min_ele_att * (1 + self.ele_coef)) * (1 - self.fnl_mob_res)
-        self.char_with_wpn_with_skill_max_ele_dmg = (self.char_with_wpn_with_skill_max_ele_att * (1 + self.ele_coef)) * (1 - self.fnl_mob_res)
+        self.fnl_mob_res = max(0, self.mob.mob_res - self.char.wpn.dec_mob_res)
+        self.char_with_wpn_with_skill_min_ele_dmg = (self.char_with_wpn_with_skill_min_ele_att * (1 + self.ele_coef / 100)) * (1 - self.fnl_mob_res / 100)
+        self.char_with_wpn_with_skill_max_ele_dmg = (self.char_with_wpn_with_skill_max_ele_att * (1 + self.ele_coef / 100)) * (1 - self.fnl_mob_res / 100)
 
         # Final DMG
-        print(self.char_with_wpn_with_skill_min_nml_dmg, self.char_with_wpn_with_skill_min_ele_dmg)
         self.fnl_min_dmg = self.char_with_wpn_with_skill_min_nml_dmg + self.char_with_wpn_with_skill_min_ele_dmg
         self.fnl_max_dmg = self.char_with_wpn_with_skill_max_nml_dmg + self.char_with_wpn_with_skill_max_ele_dmg
         return self.fnl_min_dmg, self.fnl_max_dmg
@@ -167,8 +169,6 @@ class SPCACULATOR:
 # def main():
 char_file = 'hogan_lv89.json'
 mob_file = 'dander.json'
-
-print(json.load(open(os.path.join(CHAR_FOLDER, char_file))))
 
 char = Character(**json.load(open(os.path.join(CHAR_FOLDER, char_file))))
 mob = Monster(**json.load(open(os.path.join(MOB_FOLDER, mob_file))))

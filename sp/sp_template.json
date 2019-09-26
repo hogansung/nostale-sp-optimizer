@@ -1,0 +1,14 @@
+{
+  "sp_name": "",
+  "sp_ele_type": "light",
+  "wpn_type": "right",
+  "skills": [
+    {
+      "skill_name": "",
+      "skill_cast_time": 0.0,
+      "skill_cool_down": 0.0,
+      "skill_nml_att": 0,
+      "skill_ele_att": 0
+    }
+  ]
+}
