@@ -10,5 +10,5 @@ class Monster:
         self.mob_res = mob_res
         self.mob_ele_type = mob_ele_type
         assert(0 <= self.mob_def_lvl <= 10)
-        assert(0 <= self.mob_res <= 100)
+        assert(-100 <= self.mob_res <= 100)
         assert(self.mob_ele_type in ('light', 'shadow', 'fire', 'water', 'no-element'))
